@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Booking</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Available Rooms</h1>
+    <ul>
+        {% for room in rooms %}
+            <li>
+                <strong>{{ room[1] }}</strong> (Capacity: {{ room[2] }} people)
+                <a href="{{ url_for('book', room_id=room[0]) }}">Book this room</a>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('view_bookings') }}">View all bookings</a>
+</body>
+</html>

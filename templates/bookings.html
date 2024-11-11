@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Bookings</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>All Bookings</h1>
+    {% for room, bookings in bookings %}
+        <h2>{{ room[1] }} (Capacity: {{ room[2] }} people)</h2>
+        <ul>
+            {% for booking in bookings %}
+                <li>{{ booking[2] }} - {{ booking[3] }}</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    <a href="{{ url_for('index') }}">Back to Rooms</a>
+</body>
+</html>
